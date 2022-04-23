@@ -2,16 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 // import { Container } from './styles';
+// interface RestaurantItemProps {
+//     restaurant: string;
+//     subtitle?: string;
+// }
 
-const RestaurantItem: React.FC = () => {
+const RestaurantItem = ({ restaurant }) => {
   return (
     <View style={styles.restaurantContainer}>
     <Image
-        source={{ uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg" }}
+        source={{ uri: restaurant.image}}
         style={styles.image}
     />
-    <Text style={styles.restaurantTitle}>El Cabo Coffe Bar Tres De Mayo</Text>
-    <Text style={styles.restaurantSubtitle}>$1.99 15-30 minutes</Text>
+    <Text style={styles.restaurantTitle}>{restaurant.name}</Text>
+    <Text style={styles.restaurantSubtitle}>
+        $ {restaurant.deliveryFee} &#8226; {restaurant.minDeliveryTime}-{restaurant.maxDeliveryTime} minutes
+    </Text>
 </View>
   );
 }
